@@ -19,7 +19,8 @@
 
 
 
-# I ALSO SHOULD SEARCH ABOUT Tkinter.TclError IN THE OFFICIAL DOCUMENTATION
+# I ALSO SHOULD SEARCH ABOUT Tkinter.Tcl
+# IN THE OFFICIAL DOCUMENTATION
 
 # IT'S NEEDED TO  FIX AND MARIO APP
 # IT'S NEEDED TO CHANGE TO ENGLISH THE MARIO APP
@@ -68,7 +69,7 @@ class Program(object):
         self.variable_profile = BooleanVar(value=False)
         self.variable_profile.name = 'Any'
         self.variable_profile.trace('w', self.checker_profile_screen)
-
+        #test
         # This BooleanVar have the function to call all functions of the apps screens
         self.variable_apps = BooleanVar(value=False)
         self.variable_apps.name = 'Any'
@@ -81,7 +82,8 @@ class Program(object):
     def main_screen(self):
         # Button Responsible to turn back to the previous screen
         from creating_button_function import new_button
-        self.back_button = new_button('Images/Arrow.png', self.main_Frame, self.main_Color, self.variable_arrow)
+        self.back_button = new_button('Images/Arrow.png', self.main_Frame, self.main_Color,
+                                      self.variable_arrow)
         self.back_button.grid(column=1, row=0, sticky=E)
 
         self.profile_button = new_button('Images/Profile_shadow.png', self.main_Frame, self.main_Color,
@@ -113,8 +115,8 @@ class Program(object):
                 self.variable_profile.name = self.last_screen
 
             print(self.main_Frame.grid_slaves())
-            self.frame_options.destroy()
             print(self.frame_options)
+            self.frame_options.destroy()
             self.checker_profile_screen()
 
     def account_screen(self):
@@ -124,6 +126,8 @@ class Program(object):
 
     # This function is used to direct the program to the due profile part
     def checker_profile_screen(self, *args):
+        from Profile_Functions import Create
+        from Profile_Functions import Login
         # For Apps Screen
         if self.variable_profile.name == 'Apps':
             from creating_button_function import new_button
@@ -144,7 +148,7 @@ class Program(object):
 
         # For the create user menu's screen
         elif self.variable_profile.name == 'Create':
-            from Profile_Functions import Create
+            #from Profile_Functions import Create
             self.frame_options = Frame(self.main_Frame, bg=self.main_Color)
             self.frame_options.grid(column=0, row=2, columnspan=2)
             Create(self.frame_options, self.main_Color, self.variable_profile)
@@ -153,7 +157,7 @@ class Program(object):
 
         # For the login screen
         elif self.variable_profile.name == 'Login':
-            from Profile_Functions import Login
+            #from Profile_Functions import Login
             self.frame_options = Frame(self.main_Frame, bg=self.main_Color)
             self.frame_options.grid(column=0, row=2, columnspan=2)
             Login(self.frame_options, self.main_Color, self.variable_profile)
